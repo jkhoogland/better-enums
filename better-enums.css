@@ -1,0 +1,427 @@
+body {
+    margin: 0;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+pre, code, samp, h4, .contents ul {
+    font-family:
+        Consolas, "Liberation Mono", Menlo, "Courier New", Courier, monospace;
+}
+
+pre {
+    background-color: #477093;
+    padding: 1.5em 20px;
+    border-radius: 5px;
+    overflow: scroll;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 78%;
+}
+
+pre em {
+    font-style: normal;
+    text-shadow: 0 -1px grey;
+    color: white;
+}
+
+pre.comment {
+    background-color: #EEF4F9;
+    color: #888;
+    border: 1px dashed #477093;
+}
+
+pre.comment em {
+    color: #333;
+    text-shadow: none;
+}
+
+code, samp {
+    background-color: #EEF4F9;
+    padding: 1px 3px;
+    border-radius: 3px;
+    font-size: 78%;
+}
+
+.container {
+    max-width: 760px;
+    margin-left: 230px;
+}
+
+@media (max-width: 1220px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 780px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    border-bottom: 1px solid #68a;
+    color: white;
+    opacity: 0.95;
+}
+
+nav, .spacer {
+    padding: 0.75em 0;
+    font-size: 14px;
+    background-color: #222;
+}
+
+nav a {
+    margin-right: 2em;
+}
+
+nav a.first {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@media (max-width: 560px) {
+    nav {
+        position: initial;
+    }
+
+    .spacer {
+        display: none;
+    }
+}
+
+header {
+    background-color: #4C6F8C;
+    background: linear-gradient(#395E7E, #4A79A0);
+    color: white;
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 60px;
+    font-weight: 100;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 100;
+    position: relative;
+    left: 3px;
+}
+
+header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+    left: 4px;
+    opacity: 0.5;
+}
+
+h2 {
+    margin-top: 2em;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+hr {
+    border: none;
+    height: 40px;
+}
+
+footer {
+    font-size: 14px;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+}
+
+a[href=""] {
+    color: white !important;
+    background-color: red !important;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header a:hover {
+    text-decoration: none;
+}
+
+.main a[href], footer a[href] {
+    background-color: #edd;
+    color: #844;
+    letter-spacing: -0.5px;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+header a[href], nav a[href] {
+    color: inherit;
+    background-color: transparent;
+    letter-spacing: inherit;
+}
+
+a[href] code {
+    background-color: transparent;
+}
+
+span.cpp, span.cc {
+    font-size: 90%;
+}
+
+span.eleven {
+    font-size: 85%;
+}
+
+span#note:target {
+    background-color: yellow;
+}
+
+.pane {
+    float: left;
+    width: 49%;
+}
+
+.hack {
+    clear: both;
+}
+
+.pane.left > * {
+    margin-right: 10px;
+}
+
+.pane.right > * {
+    margin-left: 10px;
+}
+
+.main h3 {
+    font-size: 30px;
+    font-weight: 100;
+    margin-top: 2em;
+    color: black;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: inherit;
+}
+
+h3.contents {
+    font-size: 22px;
+}
+
+.pane pre {
+    font-size: 14px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.15;
+}
+
+header {
+    overflow: hidden;
+}
+
+header .container {
+    position: relative;
+}
+
+div.back {
+    position: absolute;
+    bottom: -0.35em;
+    left: -40px;
+    font-size: 288px;
+    font-weight: bold;
+    letter-spacing: 20px;
+    opacity: 0.1;
+    text-shadow: -20px 20px #444;
+    white-space: nowrap;
+}
+
+.panes {
+    clear: both;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    overflow: auto;
+}
+
+.tutorial-footer {
+    margin-top: 4em;
+}
+
+.tutorial-footer .next {
+    font-weight: 100;
+    font-size: 24px;
+}
+
+.tutorial-footer .next a[href] {
+    font-weight: 300;
+}
+
+li {
+    margin-top: 5px;
+}
+
+.blurbs {
+    padding-left: 0;
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+.blurbs > li {
+    width: 45%;
+    float: left;
+    min-height: 5em;
+}
+
+.blurbs > li.even {
+    clear: both;
+    margin-left: 3%;
+    margin-right: 6%;
+}
+
+.blurbs strong {
+    font-weight: inherit;
+    font-size: 110%;
+}
+
+.blurbs em {
+    display: block;
+    margin-bottom: 1em;
+    font-size: 80%;
+    font-style: normal;
+}
+
+@media (max-width: 620px) {
+    .blurbs > li {
+        float: none;
+        width: 100%;
+        min-height: 3em;
+    }
+
+    .blurbs > li.even {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.act strong {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.act strong code {
+    font-size: 110%;
+}
+
+.resources > li {
+    margin-bottom: 3.5em;
+}
+
+.resources li ul, .resources li ol {
+    margin-top: 1.5em;
+    padding-left: 25px;
+}
+
+.splash {
+    text-align: center;
+    margin-left: -10%;
+    white-space: nowrap;
+}
+
+.splash pre {
+    display: inline-block;
+}
+
+.splash pre.left {
+    text-align: right;
+    color: inherit;
+    background-color: transparent;
+}
+
+.splash pre.right {
+    text-align: left;
+}
+
+@media (max-width: 700px) {
+    .splash {
+        margin-left: 0;
+    }
+
+    .splash pre.left {
+        display: none;
+    }
+}
+
+a[id] {
+    display: block;
+    position: relative;
+    top: -25px;
+}
+
+h4 {
+    font-weight: normal;
+    margin-top: 3em;
+    letter-spacing: -1px;
+    color: #888;
+    padding-top: 1em;
+    white-space: nowrap;
+}
+
+h4 em {
+    color: #555;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.api ul.contents {
+    -webkit-columns: 300px 2;
+    -moz-columns: 300px 2;
+    columns: 300px 2;
+}
+
+.api ul.contents > li {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.main h3 {
+    margin-top: 4em;
+}
+
+h3.contents {
+    margin-top: 2em;
+}
+
+.index .main h3 {
+    margin-top: 2em;
+}
+
+.api .contents ul {
+    font-size: 75%;
+}
+
+.api .contents > li {
+    margin-top: 0;
+    padding-bottom: 1em;
+}

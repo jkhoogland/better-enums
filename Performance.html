@@ -1,0 +1,94 @@
+<!-- Generated automatically - edit the templates! -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Performance - Better Enums</title>
+
+<link rel="canonical" href="http://aantron.github.io/better-enums/Performance.html" />
+<meta name="description" content="Better Enums compilation speed and performance testing results." />
+<meta name="author" content="Anton Bachin" />
+
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet" href="better-enums.css" />
+
+</head>
+<body class="">
+
+<nav>
+  <div class="container">
+    <a class="first" href="https://raw.githubusercontent.com/aantron/better-enums/master/enum.h"
+download>Download</a>
+    <a href="https://github.com/aantron/better-enums">GitHub</a>
+    <a href="index.html">Home</a>
+    <a href="tutorial/HelloWorld.html">Tutorial</a>
+    <a href="ApiReference.html">Reference</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="spacer">&nbsp;</div>
+
+<header>
+  <div class="container">
+    <div class="back">{}</div>
+
+    <h1><a href="index.html">Better Enums</a></h1>
+    <h2>Reflective compile-time enums for <span class="cpp">C++</span></h2>
+    <h3>Open-source under the BSD license</h3>
+  </div>
+</header>
+
+<div class="main">
+  <div class="container">
+
+
+<h2>Performance</h2>
+<p>A basic performance test is run on
+<a href="CompilerSupport.html#TestedConfigurations">every compiler tested</a>. It
+doesn't try to be very accurate &mdash; it just stress-tests the compiler once
+to get a rough idea of how long it takes to compile Better Enums.</p>
+<p>The files compared in the test are as follows:</p>
+<ul>
+<li><a href="https://github.com/aantron/better-enums/blob/0.9.0/test/performance/4-declare_enums.cc">One file</a> includes
+<code>enum.h</code> and declares 647 constants across 36 Better Enums.</li>
+<li>The <a href="https://github.com/aantron/better-enums/blob/0.9.0/test/performance/5-iostream.cc">other file</a> <em>only</em>
+includes <code>iostream</code> and does nothing with it.</li>
+</ul>
+<p>The argument is that if compiling a bunch of Better Enums is faster, or about as
+fast as, including a single standard header such as <code>iostream</code>, then Better
+Enums is fast enough for general use.</p>
+<p>Results are given for select compilers and
+<a href="CompilerSupport.html#CompileTimeReflectionConfigurations">configurations</a>
+as ratios of how long it took to compile the Better Enums file to how long it
+took to compile the <code>iostream</code> file. The less the ratio, the better. Ratios less
+than 1 mean the enums compiled faster, and ratios greater than 1 mean <code>iostream</code>
+compiled faster.</p>
+<ul>
+<li>clang 3.6, fast <code>constexpr</code>: 0.66</li>
+<li>clang 3.6, full <code>constexpr</code>: 2.25</li>
+<li>gcc 5.1, fast <code>constexpr</code>: 1.58</li>
+<li>gcc 5.1, full <code>constexpr</code>: 4.23</li>
+<li>VC2015RC, <span class="cpp">C++</span><span class="eleven">98</span>: 1.18</li>
+</ul>
+
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    Copyright &copy; 2015 Anton Bachin. Released under the BSD 2-clause license.
+    See <a href="https://github.com/aantron/better-enums/blob/master/LICENSE">
+    LICENSE</a>.
+    <br />
+    This page is part of the documentation for Better Enums 0.9.0.
+  </div>
+</footer>
+
+</body>
+</html>
+

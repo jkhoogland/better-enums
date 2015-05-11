@@ -1,0 +1,102 @@
+<!-- Generated automatically - edit the templates! -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Hello, World! - Better Enums</title>
+
+<link rel="canonical" href="http://aantron.github.io/better-enums/tutorial/HelloWorld.html" />
+<meta name="description" content="Introductory Better Enums tutorial - a simple, but complete,
+Hello World program." />
+<meta name="author" content="Anton Bachin" />
+
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet" href="../better-enums.css" />
+
+</head>
+<body class="">
+
+<nav>
+  <div class="container">
+    <a class="first" href="https://raw.githubusercontent.com/aantron/better-enums/master/enum.h"
+download>Download</a>
+    <a href="https://github.com/aantron/better-enums">GitHub</a>
+    <a href="../index.html">Home</a>
+    <a href="../tutorial/HelloWorld.html">Tutorial</a>
+    <a href="../ApiReference.html">Reference</a>
+    <a href="../Contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="spacer">&nbsp;</div>
+
+<header>
+  <div class="container">
+    <div class="back">{}</div>
+
+    <h1><a href="../index.html">Better Enums</a></h1>
+    <h2>Reflective compile-time enums for <span class="cpp">C++</span></h2>
+    <h3>Open-source under the BSD license</h3>
+  </div>
+</header>
+
+<div class="main">
+  <div class="container">
+
+
+<p>
+  Welcome to the Better Enums tutorials! The code in this tutorial forms a
+  valid program, which you can <a href="https://github.com/aantron/better-enums/blob/0.9.0/example/1-hello-world.cc">download</a> and play with.
+</p>
+
+<h2>Hello, World!</h2>
+<p>Download <a href="https://raw.githubusercontent.com/aantron/better-enums/master/enum.h"
+download><code>enum.h</code></a>, then build this program with it:</p>
+<pre>#include &lt;iostream&gt;
+<em>#include "enum.h"</em>
+
+<em>ENUM</em>(<em>Word</em>, <em>int</em>, <em>Hello</em>, <em>World</em>)
+
+int main()
+{
+    std::cout &lt;&lt; <em>(+Word::Hello)._to_string()</em> &lt;&lt; ", "
+              &lt;&lt; <em>(+Word::World)._to_string()</em> &lt;&lt; "!"
+              &lt;&lt; std::endl;
+
+    return 0;
+}</pre><p>Run it, and you should see the output "Hello, World!"</p>
+<p>Congratulations, you have just created your first Better Enum!</p>
+
+
+<section class="tutorial-footer">
+  <p class="next">
+    Continue to the next tutorial: <a href="../tutorial/Conversions.html">Conversions</a>
+  </p>
+
+  <p class="up">
+    Or, return to the
+    <a href="../index.html#Tutorial">tutorial index</a>.
+  </p>
+</section>
+
+
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    Copyright &copy; 2015 Anton Bachin. Released under the BSD 2-clause license.
+    See <a href="https://github.com/aantron/better-enums/blob/master/LICENSE">
+    LICENSE</a>.
+    <br />
+    This page is part of the documentation for Better Enums 0.9.0.
+  </div>
+</footer>
+
+</body>
+</html>
+
