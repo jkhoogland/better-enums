@@ -1,23 +1,36 @@
-SOURCE_MARKDOWN := $(wildcard tutorial/*) $(wildcard demo/*)
-SOURCE_CXX := $(SOURCE_MARKDOWN:.md=.cc)
+toexample = ../example/$(notdir $(1:.md=.cc))
 
-.PHONY : all
-all : html examples
+SOURCE_MARKDOWN := $(wildcard tutorial/*.md) $(wildcard demo/*.md)
+SOURCE_CXX := $(foreach md,$(SOURCE_MARKDOWN),$(call toexample,$(md)))
 
 .PHONY : html
 html :
 	python docs.py
+	@echo "See html/index.html"
+
+.PHONY : publish
+publish : prepare
+	cp -r html/* ../doc-publish
+	cd ../doc-publish && git add . && git commit --amend --reset-author && \
+		git push -f
+
+.PHONY : prepare
+prepare : examples web
+
+.PHONY : web
+web : examples
+	python docs.py --web
 
 .PHONY : examples
-examples : clean-examples $(SOURCE_CXX)
+examples : $(SOURCE_CXX)
 
-.PHONY : clean-examples
-clean-examples :
-	make -C ../example clean
-	rm -f ../example/*.cc
+define EXAMPLE
+$(1) : $(2)
+	python transform.py --o-cxx $(1) $(2)
+endef
 
-%.cc : %.md
-	python transform.py --o-cxx ../example/$(notdir $@) $<
+$(foreach md,$(SOURCE_MARKDOWN), \
+  		  $(eval $(call EXAMPLE,$(call toexample,$(md)),$(md))))
 
 .PHONY : clean
 clean :

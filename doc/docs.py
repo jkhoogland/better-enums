@@ -7,6 +7,8 @@ import string
 import transform
 import os
 import os.path
+import sys
+import urllib
 
 TEMPLATE_DIRECTORY = "template"
 OUTPUT_DIRECTORY   = "html"
@@ -83,15 +85,24 @@ def compose_page(relative_path, definitions):
     definitions["canonical"] = canonical
     definitions["prefix"] = prefix
 
+    definitions["quoted_url"] = urllib.quote(definitions["canonical"], "")
+    definitions["quoted_title"] = urllib.quote(definitions["title"], "")
+
     if "class" not in definitions:
         definitions["class"] = ""
 
     text = templates["page"]
-    text = scrub_comments(text)
 
-    while '$' in text:
-        text = apply_template(text, definitions)
-        text = scrub_comments(text)
+    while True:
+        new_text = scrub_comments(text)
+        new_text = re.sub("\$\$", "$$$$", new_text)
+        new_text = apply_template(new_text, definitions)
+
+        if new_text == text:
+            text = apply_template(new_text, definitions)
+            break
+
+        text = new_text
 
     text = "<!-- Generated automatically - edit the templates! -->\n\n" + text
 
@@ -129,7 +140,9 @@ def compose_general_page(relative_path):
     write_page(relative_path, text)
 
 def list_general_pages():
-    return glob.glob("*.md")
+    return filter(
+        lambda s: not os.path.splitext(os.path.basename(s))[0].isupper(),
+        glob.glob("*.md"))
 
 def process_threaded(directory):
     sources = glob.glob(os.path.join(directory, "*.md"))
@@ -143,7 +156,7 @@ def process_threaded(directory):
 
         source_file = \
           os.path.splitext(os.path.basename(file))[0] + "." + CXX_EXTENSION
-        source_link = "$repo/blob/$version/example/" + source_file
+        source_link = "$repo/blob/$ref/example/" + source_file
 
         definitions[directory + "_body"] = definitions["body"]
         definitions["body"] = templates[directory]
@@ -183,6 +196,10 @@ def generate_sitemap():
     for url in generated:
         text += "  <url>\n"
         text += "    <loc>%s</loc>\n" % url
+
+        if ".html" not in url:
+            text += "    <priority>1.0</priority>\n"
+
         text += "  </url>\n"
 
     text += "</urlset>\n"
@@ -191,6 +208,9 @@ def generate_sitemap():
 
 def main():
     load_templates()
+
+    if not (len(sys.argv) >= 2 and sys.argv[1] == "--web"):
+        templates["ga"] = ""
 
     remove_output_directory()
 
@@ -202,6 +222,8 @@ def main():
         compose_general_page(page)
 
     copy_static_file("better-enums.css")
+    copy_static_file("image/twsupport.png")
+    copy_static_file("image/tweet.png")
 
     generate_sitemap()
 

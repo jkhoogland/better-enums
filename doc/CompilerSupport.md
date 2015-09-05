@@ -1,11 +1,10 @@
 ## Compiler support
 
-Better Enums aims to support all major compilers. It is known to definitely work
-on
+Better Enums aims to support all major compilers. It is known to work on:
 
   - clang 3.3 to 3.6
-  - gcc 4.3 to 5.1
-  - Visual C++ 2013U4, 2015RC.
+  - gcc 4.3 to 5.2
+  - Visual C++ 2008 to 2015RC.
 
 The library can be used with any compiler that supports either $cxx11, or $cxx98
 with the `__VA_ARGS__` extension. This includes every version of gcc and clang I
@@ -76,6 +75,9 @@ vc2015 /EHsc
 vc2015 /EHsc /DBETTER_ENUMS_STRICT_CONVERSION
 vc2013 /EHsc
 vc2013 /EHsc /DBETTER_ENUMS_STRICT_CONVERSION
+vc2012 /EHsc
+vc2010 /EHsc
+vc2008 /EHsc
 clang++36 -std=c++11
 clang++36 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
 clang++36 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
@@ -88,14 +90,11 @@ clang++34 -std=c++11
 clang++34 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
 clang++34 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
 clang++34 -std=c++98
-clang++33 -std=c++11
-clang++33 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
-clang++33 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
 clang++33 -std=c++98
-g++51 -std=c++11
-g++51 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
-g++51 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
-g++51 -std=c++98
+g++52 -std=c++11
+g++52 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
+g++52 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
+g++52 -std=c++98
 g++49 -std=c++11
 g++49 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
 g++49 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
@@ -108,17 +107,12 @@ g++47 -std=c++11
 g++47 -std=c++11 -DBETTER_ENUMS_STRICT_CONVERSION
 g++47 -std=c++11 -DBETTER_ENUMS_CONSTEXPR_TO_STRING
 g++47 -std=c++98
-g++46 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR
-g++46 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR -DBETTER_ENUMS_STRICT_CONVERSION
 g++46 -std=c++98
-g++45 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR
-g++45 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR -DBETTER_ENUMS_STRICT_CONVERSION
 g++45 -std=c++98
-g++44 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR
-g++44 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR -DBETTER_ENUMS_STRICT_CONVERSION
 g++44 -std=c++98
-g++43 -std=c++0x -DBETTER_ENUMS_NO_CONSTEXPR
 g++43 -std=c++98
 ~~~
 
-%% description = Information about compiler support and feature detection.
+%% description =
+Better Enums compiler support, compatibility, feature detection, and automated
+testing.

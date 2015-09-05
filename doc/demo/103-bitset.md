@@ -17,7 +17,7 @@ We simply need to find the maximum value of any given enum type.
     constexpr <em>Enum max_loop</em>(Enum accumulator, size_t index)
     {
         return
-            <em>index >= Enum::_size ? accumulator :
+            <em>index >= Enum::_size() ? accumulator :
             Enum::_values()[index] > accumulator ?
                 max_loop<Enum>(Enum::_values()[index], index + 1) :
                 max_loop<Enum>(accumulator, index + 1)</em>;
@@ -65,5 +65,5 @@ static_assert(max<EFLAGS>()._to_integral() < 32,
               "some bit indices are out of range");
 ~~~
 
-%% description = Finding the maximum value of a Better Enum constant for use in
-declaring bit set types.
+%% description = Finding the maximum value of a Better Enum for use in declaring
+statically-sized bit set types.

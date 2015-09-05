@@ -114,7 +114,7 @@ static_assert_1(
 static_assert_1(Channel::_is_valid("Green"));
 static_assert_1(Channel::_is_valid_nocase("green"));
 
-static_assert_1(Channel::_size == 3);
+static_assert_1(Channel::_size() == 3);
 static_assert_1(Channel::_values().size() == 3);
 static_assert_1(*Channel::_values().begin() == +Channel::Red);
 static_assert_1(*(Channel::_values().end() - 1) == +Channel::Blue);
@@ -218,9 +218,9 @@ class EnumTests : public CxxTest::TestSuite {
 
     void test_value_iterable()
     {
-        TS_ASSERT_EQUALS(Channel::_size, 3);
-        TS_ASSERT_EQUALS(Depth::_size, 2);
-        TS_ASSERT_EQUALS(Channel::_values().size(), Channel::_size);
+        TS_ASSERT_EQUALS(Channel::_size(), 3);
+        TS_ASSERT_EQUALS(Depth::_size(), 2);
+        TS_ASSERT_EQUALS(Channel::_values().size(), Channel::_size());
         TS_ASSERT_EQUALS(*Channel::_values().begin(), +Channel::Red);
         TS_ASSERT_EQUALS(*(Channel::_values().begin() + 1), +Channel::Green);
         TS_ASSERT_EQUALS(*(Channel::_values().begin() + 2), +Channel::Blue);
@@ -245,7 +245,7 @@ class EnumTests : public CxxTest::TestSuite {
 
     void test_name_iterable()
     {
-        TS_ASSERT_EQUALS(Channel::_names().size(), Channel::_size);
+        TS_ASSERT_EQUALS(Channel::_names().size(), Channel::_size());
         TS_ASSERT_EQUALS(strcmp(*Channel::_names().begin(), "Red"), 0);
         TS_ASSERT_EQUALS(strcmp(Channel::_names()[0], "Red"), 0);
         TS_ASSERT_EQUALS(strcmp(Depth::_names()[0], "HighColor"), 0);
@@ -297,3 +297,10 @@ class EnumTests : public CxxTest::TestSuite {
         TS_ASSERT_EQUALS(strcmp(*test::Namespaced::_names().begin(), "One"), 0);
     }
 };
+
+
+
+ENUM(InternalNameCollisions, int,
+     EnumClassForSwitchStatements, PutNamesInThisScopeAlso,
+     force_initialization, value_array, raw_names, name_storage, name_array,
+     initialized, the_raw_names, the_name_array)

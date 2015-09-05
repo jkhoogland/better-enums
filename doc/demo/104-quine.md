@@ -82,7 +82,7 @@ initializers for sequential values, but I won't go through this exercise here.
     constexpr <em>size_t constants_length</em>(size_t index = 0, size_t accumulator = 0)
     {
         return
-            <em>index >= Enum::_size ? accumulator :
+            <em>index >= Enum::_size() ? accumulator :
             constants_length<Enum>(
                 index + 1, accumulator
                             + string_length(", ")
@@ -170,4 +170,6 @@ ENUM(Channel, int, Red = 0, Green = 1, Blue = 2)
 ENUM(Depth, int, TrueColor = 1, HighColor = 0)
 ~~~
 
-%% description = Contrived example that shows static memory allocation.
+%% description = Have a Better Enum print its own definition. Shows how to
+compute the amount of memory necessary from the reflective information provided
+by a Better Enum.

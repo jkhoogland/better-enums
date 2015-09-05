@@ -71,7 +71,7 @@ slightly more complex template function for the general case:
     constexpr <em>Enum default_imp</em>l()
     {
         return
-            <em>Enum::_size < 2 ?
+            <em>Enum::_size() < 2 ?
                 throw std::logic_error("enum has no valid constants") :
             Enum::_values()[0] == invalid_impl<Enum>() ?
                 Enum::_values()[1] :
@@ -170,5 +170,6 @@ There are many possible variations of these policies, but I think most of them
 can be encoded in a reasonable fashion using the tools Better Enums provides.
 Enjoy!
 
-%% description = Encoding project policies for static enforcement using Better
-Enums.
+%% description = An example that uses Better Enums compile-time reflection to
+create invalid and default values for each enum, enforced statically by the
+compiler, for readability and maintainability.
